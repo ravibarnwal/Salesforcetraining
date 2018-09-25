@@ -1,0 +1,3 @@
+OutBoundEmail es = new OutBoundEmail();
+es.sendMyEmail();
+System.debug('Mail sent to specified emails, plase check....once.');
