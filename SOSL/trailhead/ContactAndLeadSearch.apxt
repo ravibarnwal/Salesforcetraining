@@ -1,0 +1,10 @@
+/**
+ * An Apex class that returns both contacts and leads based on a parameter.
+ */
+public class ContactAndLeadSearch {
+    public static List<List<Sobject>> searchContactsAndLeads(String keyword) {
+        List<List<sObject>> searchList = [FIND :keyword IN NAME FIELDS 
+                   RETURNING Lead(FirstName, LastName),Contact(FirstName,LastName)];
+        return searchList;
+    }
+}
