@@ -1,0 +1,14 @@
+/**
+ * An Apex trigger for Account that matches Shipping Address Postal Code with Billing Address Postal Code based on a custom field.
+ */
+trigger AccountAddressTrigger on Account (before insert) {
+    for(Account actNew : Trigger.New) {
+        if (actNew.Match_Billing_Address__c == TRUE && actNew.BillingAddress== null) {
+            actNew.ShippingCity = actNew.BillingCity;
+            actNew.ShippingCountry = actNew.BillingCountry;
+            actNew.ShippingPostalCode = actNew.BillingPostalCode;
+            actNew.ShippingState = actNew.BillingState;
+            actNew.ShippingStreet = actNew.BillingStreet;
+        }
+    }
+}
